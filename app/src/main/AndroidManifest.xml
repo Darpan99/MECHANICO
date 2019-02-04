@@ -21,11 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <activity android:name=".REGISTRATION"></activity>
 
+        <activity android:name=".REGISTRATION" />
         <activity android:name=".LOGIN">
             <intent-filter>
                 <action android:name="com.example.darpan.mechanico.login3" />
@@ -40,7 +41,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".features"
+            android:label="@string/title_activity_features"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
