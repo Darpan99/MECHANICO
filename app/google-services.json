@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "339393537405",
+    "firebase_url": "https://mechanico-38910.firebaseio.com",
+    "project_id": "mechanico-38910",
+    "storage_bucket": "mechanico-38910.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339393537405:android:22fe9c091119f250",
+        "android_client_info": {
+          "package_name": "com.example.darpan.mechanico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339393537405-pfu81elter71aouh0uulfcscajk5jpmb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.darpan.mechanico",
+            "certificate_hash": "c4b3bc3394a21e433b10cc57b0ceb332272dfa17"
+          }
+        },
+        {
+          "client_id": "339393537405-ju75mn5th26t2c4ef9h2cfneinsbnleh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ4BVnkd84AZ89YiWE8mrwF4ngKCDS69Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339393537405-ju75mn5th26t2c4ef9h2cfneinsbnleh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
