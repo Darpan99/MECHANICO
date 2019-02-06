@@ -28,6 +28,7 @@
     </LinearLayout>
 
 
+
     <Button
                 android:id="@+id/btnlogout"
                 android:layout_width="200dp"
@@ -48,6 +49,11 @@
                 android:layout_marginTop="80dp"
                 app:cardElevation="20dp" >
 
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/dentingpainting" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -57,7 +63,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="250dp"
-                app:cardElevation="20dp" />
+                app:cardElevation="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/servicing" />
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="150dp"
@@ -66,7 +79,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="420dp"
-                app:cardElevation="20dp" />
+                app:cardElevation="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/cngfitting" />
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="150dp"
@@ -75,7 +95,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="240dp"
                 android:layout_marginTop="420dp"
-                app:cardElevation="20dp" />
+                app:cardElevation="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/rent" />
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="150dp"
@@ -84,7 +111,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="240dp"
                 android:layout_marginTop="250dp"
-                app:cardElevation="20dp" />
+                app:cardElevation="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/tyreservices" />
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="150dp"
@@ -93,7 +127,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="240dp"
                 android:layout_marginTop="80dp"
-                app:cardElevation="20dp" />
+                app:cardElevation="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/emergency" />
+            </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/btncall"
