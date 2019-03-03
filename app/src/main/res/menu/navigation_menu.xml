@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_1"
+        android:title="@string/my_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        >
+    </item>
+    <item
+        android:id="@+id/item_2"
+        android:title="@string/my_orders"
+        android:icon="@drawable/ic_mood_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/item_3"
+        android:title="@string/payments"
+        android:icon="@drawable/ic_payment_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/item_5"
+        android:title="@string/account_settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/item_4"
+        android:title="@string/help"
+        android:icon="@drawable/ic_help_black_24dp"
+        >
+    </item>
+
+
+</menu>
