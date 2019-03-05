@@ -7,89 +7,93 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PAGE3  extends AppCompatActivity {
-    Button btnLogOut;
-    FirebaseAuth firebaseAuth;
-    DrawerLayout dl;
-    ActionBarDrawerToggle abdt;
 
-     private FirebaseAuth.AuthStateListener authStateListener;
+    FirebaseAuth firebaseAuth;
+    private DrawerLayout drawerLayout;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
-        getSupportActionBar().hide();
-        btnLogOut = findViewById(R.id.btnlogout)
-        dl= findViewById(R.id.DL);
-        abdt=new ActionBarDrawerToggle(this,dl,R.string.Open,R.string.Close);
-        abdt.setDrawerIndicatorEnabled(true);
-        dl.addDrawerListener(abdt);
-        abdt.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        NavigationView n_view= findViewById(R.id.nav_view);
-        n_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        drawerLayout=findViewById(R.id.DL);
+        NavigationView navigationView=findViewById(R.id.design_navigation_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public void onDrawerSlide(View view, float v) {
+                //Respond when the drawer's position changes
+            }
 
-                int id = menuItem.getItemId();
+            @Override
+            public void onDrawerOpened( View view) {
+                //Respond when the drawer is opened
+            }
 
-                if(id==R.id.item_1)
-                {
-                    Toast.makeText(PAGE3.this,"My Profile",Toast.LENGTH_LONG).show();
-                }
+            @Override
+            public void onDrawerClosed( View view) {
+                //Responf when the drawer is closed
+            }
 
+            @Override
+            public void onDrawerStateChanged(int i) {
+                //Respond when the drawer motion state changes
+            }
+        });
+
+
+
+
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected( MenuItem menuItem) {
+
+               menuItem.setChecked(true);
+               drawerLayout.closeDrawers();
                 return true;
             }
+
         });
 
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                FirebaseAuth.getInstance().signOut();
-                Intent I = new Intent(PAGE3.this, REGISTRATION.class);
-                startActivity(I);
-
-            }
-        });
 
     }
 
-    public void BtnSetEmergency_onClick(View view) {
-        String number = "100";
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + number));
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        startActivity(intent);
-    }
 
-    public void BtnSetEmergencyamb_onClick(View view) {
-        String number = "102";
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + number));
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+       switch(item.getItemId()) {
+           case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+       }
+           return  super.onOptionsItemSelected(item);
+
     }
 }
