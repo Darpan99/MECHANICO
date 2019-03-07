@@ -16,22 +16,22 @@
 
     <item
         android:id="@+id/item_3"
-        android:title="@string/payments"
-        android:icon="@drawable/ic_payment_black_24dp"
-        >
-    </item>
-
-    <item
-        android:id="@+id/item_5"
-        android:title="@string/account_settings"
+        android:title="Account settings"
         android:icon="@drawable/ic_settings_black_24dp"
         >
     </item>
 
     <item
-        android:id="@+id/item_4"
-        android:title="@string/help"
+        android:id="@+id/item_5"
+        android:title="Help"
         android:icon="@drawable/ic_help_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/item_4"
+        android:title="logout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
         >
     </item>
 

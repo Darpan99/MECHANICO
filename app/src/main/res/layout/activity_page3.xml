@@ -58,15 +58,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/dentingpainting" />
-
-                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/dentingpainting" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -85,15 +83,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/servicing" />
-
-                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/servicing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/servicing" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -112,15 +108,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/cngfitting" />
-
-                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/cng"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/cngfitting" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -139,15 +133,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/book" />
+                <ImageButton
+                    android:id="@+id/book_cab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/book" />
 
-                </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -166,15 +159,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/tyreservices" />
-
-                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/tyre_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/tyreservices" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -193,15 +184,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        app:srcCompat="@drawable/emergency" />
-
-                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/imageButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/emergency" />
             </android.support.v7.widget.CardView>
         </GridLayout>
 
@@ -221,7 +210,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/activity_features_drawer" />
+        app:menu="@menu/navigation_menu" />
 
 </android.support.v4.widget.DrawerLayout>
 

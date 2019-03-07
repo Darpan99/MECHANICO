@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -24,7 +26,7 @@ import android.widget.Toolbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PAGE3  extends AppCompatActivity {
-
+    ImageButton dent,services,cng,cab,tyre,emergency;
     FirebaseAuth firebaseAuth;
     private DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -55,7 +57,7 @@ public class PAGE3  extends AppCompatActivity {
 
             @Override
             public void onDrawerClosed( View view) {
-                //Responf when the drawer is closed
+                //Respond when the drawer is closed
             }
 
             @Override
@@ -66,13 +68,101 @@ public class PAGE3  extends AppCompatActivity {
 
 
 
+        dent=(ImageButton)findViewById(R.id.imageButton);
+        dent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  =new Intent(PAGE3.this,denting.class);
+                startActivity(intent);
+            }
 
+        });
 
+        services=(ImageButton)findViewById(R.id.servicing);
+        services.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(PAGE3.this, services.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+        );
 
+        cng=(ImageButton)findViewById(R.id.cng);
+        cng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  =new Intent(PAGE3.this,CNG_fitting.class);
+                startActivity(intent);
+            }
+
+        });
+
+        cab=(ImageButton)findViewById(R.id.book_cab);
+        cab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  =new Intent(PAGE3.this,book_cab.class);
+                startActivity(intent);
+            }
+
+        });
+        tyre=(ImageButton)findViewById(R.id.tyre_service);
+        tyre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  =new Intent(PAGE3.this,Tyre_service.class);
+                startActivity(intent);
+            }
+
+        });
+        emergency=(ImageButton)findViewById(R.id.imageButton7);
+        emergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  =new Intent(PAGE3.this,Emergency.class);
+                startActivity(intent);
+            }
+
+        });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected( MenuItem menuItem) {
+                // handle navigation view item clicks here
+                int id =menuItem.getItemId();
+                if(id==R.id.item_1)
+                {
+                    //my profile
+                    Intent i=new Intent( PAGE3.this,My_profile.class);
+                    startActivity(i);
 
+                }
+                else if(id==R.id.item_2) {
+                    //my orders
+                    Intent i=new Intent(PAGE3.this,My_orders.class);
+                    startActivity(i);
+                }
+
+                else if(id==R.id.item_3)
+                {
+                    //account settings
+                    Intent i=new Intent(PAGE3.this,Account_Settings.class);
+                    startActivity(i);
+
+                }
+                else if (id==R.id.item_5)
+                {
+                    //help
+                    Intent i=new Intent(PAGE3.this,Help.class);
+                    startActivity(i);
+
+                }
+                else
+                {
+                    //logout
+                    Intent i=new Intent(PAGE3.this,Splash.class);
+                    startActivity(i);
+                }
                menuItem.setChecked(true);
                drawerLayout.closeDrawers();
                 return true;
@@ -96,4 +186,5 @@ public class PAGE3  extends AppCompatActivity {
            return  super.onOptionsItemSelected(item);
 
     }
+
 }

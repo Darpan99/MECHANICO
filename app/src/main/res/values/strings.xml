@@ -12,7 +12,33 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
-    </string>
+     </string>
+    <string-array name="service">
+        <item>Full Body</item>
+        <item>Front Bumper</item>
+        <item>Bonnet</item>
+        <item>Rear Bumper</item>
+        <item>Trunk</item>
+        <item>Front Door(L)</item>
+        <item>Front Door(R)</item>
+        <item>Rear Door(R)</item>
+        <item>Rear Door(L)</item>
+        <item>Fender(L)</item>
+        <item>Fender(R)</item>
+        <item>Quater Panel(R)</item>
+        <item>Quater Panel(L)</item>
+        <item>Running Board(R)</item>
+        <item>Running Board(L)</item>
+    </string-array>
+    <string name="application_name">Book</string>
+    <string-array name="Car">
+        <item>Add from profile</item>
+        <item>Add a new car</item>
+
+
+    </string-array>
+
+
     <string name="title_activity_features">features</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -27,6 +53,9 @@
     <string name="account_settings">Account Settings</string>
     <string name="help">Help</string>
     <string name="my_profile">My Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
