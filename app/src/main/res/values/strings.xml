@@ -30,6 +30,18 @@
         <item>Running Board(R)</item>
         <item>Running Board(L)</item>
     </string-array>
+    <string-array name="tyre">
+        <item>Tyre Replacement</item>
+        <item>Wheel Alignment</item>
+        <item>Tyre Rotation</item>
+        <item>Wheel Balancing</item>
+    </string-array>
+    <string-array name="car_services">
+        <item>Complete Service</item>
+        <item>Washing</item>
+        <item>Interior Cleaning</item>
+        <item>Anti Rust and Coating</item>
+    </string-array>
     <string name="application_name">Book</string>
     <string-array name="Car">
         <item>Add from profile</item>
