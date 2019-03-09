@@ -39,7 +39,6 @@ public class PAGE3  extends AppCompatActivity {
         setContentView(R.layout.activity_page3);
         drawerLayout=findViewById(R.id.DL);
         NavigationView navigationView=findViewById(R.id.design_navigation_view);
-        Toolbar toolbar = findViewById(R.id.toolbar);
        // setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -160,7 +159,8 @@ public class PAGE3  extends AppCompatActivity {
                 else
                 {
                     //logout
-                    Intent i=new Intent(PAGE3.this,Splash.class);
+                    FirebaseAuth.getInstance().signOut();
+                    Intent i=new Intent(PAGE3.this,REGISTRATION.class);
                     startActivity(i);
                 }
                menuItem.setChecked(true);
@@ -186,5 +186,24 @@ public class PAGE3  extends AppCompatActivity {
            return  super.onOptionsItemSelected(item);
 
     }
+    public void BtnSetEmergency_onClick(View view) {
+        String number = "100";
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:" + number));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        startActivity(intent);
+    }
 
+    public void BtnSetEmergencyamb_onClick(View view) {
+        String number = "102";
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:" + number));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        startActivity(intent);
+    }
 }
+
