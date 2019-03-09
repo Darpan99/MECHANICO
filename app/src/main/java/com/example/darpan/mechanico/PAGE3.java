@@ -91,7 +91,7 @@ public class PAGE3  extends AppCompatActivity {
         cng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  =new Intent(PAGE3.this,CNG_fitting.class);
+                Intent intent  =new Intent(PAGE3.this,Book_now.class);
                 startActivity(intent);
             }
 
@@ -119,7 +119,7 @@ public class PAGE3  extends AppCompatActivity {
         emergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  =new Intent(PAGE3.this,Emergency.class);
+                Intent intent  =new Intent(PAGE3.this,Book_now.class);
                 startActivity(intent);
             }
 
