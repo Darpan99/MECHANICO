@@ -18,7 +18,7 @@ public class Book_now extends AppCompatActivity {
 
     Button car,model,type;
     TextView itemselected,itemselected1,itemselected2;
-    String[] listItems,listhonda;
+    String[] listItems,listhonda,listhyundai;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
 
@@ -43,6 +43,7 @@ public class Book_now extends AppCompatActivity {
         itemselected=(TextView)findViewById(R.id.typetext);
         listItems = getResources().getStringArray(R.array.cars);
         listhonda = getResources().getStringArray(R.array.Honda);
+        listhyundai = getResources().getStringArray(R.array.Hyundai);
 
         checkedItems = new boolean[listItems.length];
 
@@ -77,6 +78,30 @@ public class Book_now extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {
                             itemselected.setText(listhonda[i]);
+                            dialog.dismiss();
+
+
+                        }
+                    });
+                    AlertDialog mDialog = mBuilder.create();
+                    mDialog.show();
+
+                }
+            });
+        }
+
+        else if(itemselected.equals("Hyundai"))
+        {
+            model.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
+                    mBuilder.setTitle("Select the model");
+                    mBuilder.setSingleChoiceItems(listhyundai, -1, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            itemselected.setText(listhyundai[i]);
                             dialog.dismiss();
 
 

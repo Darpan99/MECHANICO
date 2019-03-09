@@ -70,13 +70,9 @@
         <item>Honda</item>
         <item>Hyundai</item>
         <item>Toyota</item>
-        <item>Cheverolet</item>
-        <item>Tata</item>
         <item>Ford</item>
-        <item>Datsun</item>
         <item>Volkswagen</item>
-        <item>Mitsubishi</item>
-        <item>Maruti</item>
+
 
     </string-array>
 
@@ -86,6 +82,14 @@
         <item>Brio</item>
         <item>Amaze</item>
         <item>Accord</item>
+    </string-array>
+
+    <string-array name="Hyundai">
+        <item>Xcent</item>
+        <item>Santro</item>
+        <item>i20</item>
+        <item>Verna</item>
+        <item>Tucson</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
