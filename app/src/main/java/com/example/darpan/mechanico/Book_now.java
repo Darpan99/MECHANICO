@@ -32,15 +32,15 @@ public class Book_now extends AppCompatActivity {
         spinner1= (Spinner)findViewById(R.id.spinner);
 
         ArrayAdapter<String> myadapter=new ArrayAdapter<>(Book_now.this,android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Car));
-        myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(myadapter);
+                            myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinner1.setAdapter(myadapter);
 
         car=(Button)findViewById(R.id.carbtn);
         model=(Button)findViewById(R.id.modelbtn);
         type=(Button)findViewById(R.id.typebtn);
         itemselected=(TextView)findViewById(R.id.cartext);
         itemselected1=(TextView)findViewById(R.id.modeltext);
-        itemselected=(TextView)findViewById(R.id.typetext);
+        itemselected2=(TextView)findViewById(R.id.typetext);
         listItems = getResources().getStringArray(R.array.cars);
         listhonda = getResources().getStringArray(R.array.Honda);
         listhyundai = getResources().getStringArray(R.array.Hyundai);
@@ -66,12 +66,12 @@ public class Book_now extends AppCompatActivity {
             }
         });
 
-        if(itemselected.equals("Honda"))
-        {
+
             model.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    if(itemselected.equals("Honda"))
+                    {
                     final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
                     mBuilder.setTitle("Select the car");
                     mBuilder.setSingleChoiceItems(listhonda, -1, new DialogInterface.OnClickListener() {
@@ -87,32 +87,10 @@ public class Book_now extends AppCompatActivity {
                     mDialog.show();
 
                 }
-            });
-        }
-
-        else if(itemselected.equals("Hyundai"))
-        {
-            model.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
-                    mBuilder.setTitle("Select the model");
-                    mBuilder.setSingleChoiceItems(listhyundai, -1, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int i) {
-                            itemselected1.setText(listhyundai[i]);
-                            dialog.dismiss();
+            }
+        });
 
 
-                        }
-                    });
-                    AlertDialog mDialog = mBuilder.create();
-                    mDialog.show();
-
-                }
-            });
-        }
 
 
 
