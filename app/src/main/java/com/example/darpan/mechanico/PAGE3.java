@@ -160,7 +160,8 @@ public class PAGE3  extends AppCompatActivity {
                 else
                 {
                     //logout
-                    Intent i=new Intent(PAGE3.this,Splash.class);
+                    FirebaseAuth.getInstance().signOut();
+                    Intent i=new Intent(PAGE3.this,REGISTRATION.class);
                     startActivity(i);
                 }
                menuItem.setChecked(true);
