@@ -77,7 +77,7 @@ public class Book_now extends AppCompatActivity {
                     mBuilder.setSingleChoiceItems(listhonda, -1, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {
-                            itemselected.setText(listhonda[i]);
+                            itemselected1.setText(listhonda[i]);
                             dialog.dismiss();
 
 
@@ -101,7 +101,7 @@ public class Book_now extends AppCompatActivity {
                     mBuilder.setSingleChoiceItems(listhyundai, -1, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {
-                            itemselected.setText(listhyundai[i]);
+                            itemselected1.setText(listhyundai[i]);
                             dialog.dismiss();
 
 
