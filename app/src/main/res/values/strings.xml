@@ -66,6 +66,32 @@
     <string name="help">Help</string>
     <string name="my_profile">My Profile</string>
 
+    <string-array name="cars">
+        <item>Honda</item>
+        <item>Hyundai</item>
+        <item>Toyota</item>
+        <item>Ford</item>
+        <item>Volkswagen</item>
+
+
+    </string-array>
+
+    <string-array name="Honda">
+        <item>Jazz</item>
+        <item>Civic</item>
+        <item>Brio</item>
+        <item>Amaze</item>
+        <item>Accord</item>
+    </string-array>
+
+    <string-array name="Hyundai">
+        <item>Xcent</item>
+        <item>Santro</item>
+        <item>i20</item>
+        <item>Verna</item>
+        <item>Tucson</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
