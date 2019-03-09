@@ -11,6 +11,7 @@ public class book_cab extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_cab);
+        getSupportActionBar().hide();
     }
 
     public void bookuber(View view) {

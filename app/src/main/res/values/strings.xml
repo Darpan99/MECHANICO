@@ -50,7 +50,11 @@
 
     </string-array>
 
-
+    <string-array name="fuel">
+        <item>Petrol</item>
+        <item>Diesel</item>
+        <item>CNG</item>
+    </string-array>
     <string name="title_activity_features">features</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -92,6 +96,27 @@
         <item>Tucson</item>
     </string-array>
 
+    <string-array name="Toyota">
+        <item>Fortuner</item>
+        <item>Etios</item>
+        <item>Yaris</item>
+        <item>Camry</item>
+        <item>Altis</item>
+    </string-array>
+    <string-array name="Ford">
+        <item>EcoSport</item>
+        <item>Figo</item>
+        <item>Aspire</item>
+        <item>Freestyle</item>
+        <item>Mustang</item>
+    </string-array>
+    <string-array name="Volkswagen">
+        <item>Polo</item>
+        <item>Vento</item>
+        <item>Passat</item>
+        <item>Ameo</item>
+        <item>Tiguan</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
