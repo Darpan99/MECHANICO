@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:background="@color/azure"
+                android:background="@color/colorAccent"
+                android:textColor="@color/white"
                 android:text= "Select the service"
                 android:textSize="18sp" />
 

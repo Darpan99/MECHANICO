@@ -20,7 +20,7 @@ public class book_cab extends AppCompatActivity {
     }
 
     public void bookola(View view) {
-        Intent intent = getPackageManager().getLaunchIntentForPackage("com.olacabs");
+        Intent intent = getPackageManager().getLaunchIntentForPackage("com.olacabs.customer");
         startActivity(intent);
     }
 }
