@@ -91,4 +91,3 @@ public class LOGIN extends AppCompatActivity {
         firebaseAuth.addAuthStateListener(authStateListener);
     }
 }
-

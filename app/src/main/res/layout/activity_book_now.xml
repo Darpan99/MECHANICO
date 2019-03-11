@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/azure"
     tools:context=".Book_now">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/azure">
+
 
 
     <android.support.v7.widget.CardView
@@ -17,11 +22,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="75dp"
                 android:background="@color/colorAccent"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="350dp"
@@ -31,41 +38,38 @@
                     android:text="BOOK"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="36dp"
+                    android:textSize="30dp"
                     android:textStyle="bold" />
             </LinearLayout>
-
-
 
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_alignParentStart="false"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
-                android:background="@drawable/edittextstyle"
-                android:layout_marginTop="200dp"
-                />
+                android:layout_marginTop="150dp"
+                android:background="@drawable/edittextstyle" />
+
             <Button
                 android:id="@+id/carbtn"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginLeft="15dp"
                 android:background="@drawable/roundshapbtn"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginTop="270dp"
                 android:text="Brand"
+                android:textColor="@color/white"
                 android:textSize="20dp"
-                />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/modelbtn"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
-                android:layout_centerHorizontal="false"
-                android:layout_marginTop="350dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="270dp"
                 android:background="@drawable/roundshapbtn"
                 android:onClick="modelname"
                 android:text="model"
@@ -78,63 +82,54 @@
                 android:layout_width="120dp"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="false"
-
-                android:layout_marginTop="420dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="340dp"
                 android:background="@drawable/roundshapbtn"
-                android:text="Petrol/diesel/CNG"
+                android:text="FUEL TYPE"
                 android:textColor="@color/white"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="0dp"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/cartext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="270dp"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="150dp"
-                android:background="@drawable/edittextstyle"
-                />
+                android:layout_marginTop="200dp"
+                android:background="@drawable/edittextstyle" />
 
             <EditText
                 android:id="@+id/modeltext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="350dp"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="150dp"
-                android:background="@drawable/edittextstyle"
-                />
+                android:layout_marginTop="270dp"
+                android:background="@drawable/edittextstyle" />
 
             <EditText
                 android:id="@+id/typetext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="420dp"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="150dp"
-                android:background="@drawable/edittextstyle"
-                />
+                android:layout_marginTop="340dp"
+                android:background="@drawable/edittextstyle" />
 
             <EditText
                 android:id="@+id/addtext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="550dp"
-                android:layout_marginLeft="150dp"
-                android:background="@drawable/edittextstyle"
-                android:layout_centerHorizontal="true"
-                />
-
+                android:layout_marginTop="460dp"
+                android:background="@color/azure" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="500dp"
+                android:layout_marginTop="420dp"
                 android:text="Enter your address"
-                android:textStyle="bold"
                 android:textAlignment="center"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
 
             <TextView
@@ -142,14 +137,12 @@
                 android:layout_width="200dp"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="100dp"
                 android:text="Select your car"
-                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="25dp"
-                />
+                android:textStyle="bold" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
-
+    </ScrollView>
 </RelativeLayout>

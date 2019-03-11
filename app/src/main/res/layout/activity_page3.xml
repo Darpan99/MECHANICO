@@ -27,7 +27,8 @@
             android:layout_centerInParent="true"
             android:text="SERVICES"
             android:textAlignment="center"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="@color/colorAccent"
+
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -64,7 +65,8 @@
                     android:id="@+id/imageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/dentingpainting" />
+                    android:background="@drawable/dentingpainting" />
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -89,7 +91,7 @@
                     android:id="@+id/servicing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/servicing" />
+                    android:background="@drawable/servicing" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -114,7 +116,7 @@
                     android:id="@+id/cng"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/cngfitting" />
+                    android:background="@drawable/cngfitting" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -139,7 +141,7 @@
                     android:id="@+id/book_cab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/book" />
+                    android:background="@drawable/taxinewnew" />
 
             </android.support.v7.widget.CardView>
 
@@ -165,7 +167,7 @@
                     android:id="@+id/tyre_service"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/tyreservices" />
+                    android:background="@drawable/tyreservices" />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -190,7 +192,7 @@
                     android:id="@+id/imageButton7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/emergency" />
+                    android:background="@drawable/breakdownnewnew" />
             </android.support.v7.widget.CardView>
 
         </GridLayout>

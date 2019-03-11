@@ -30,6 +30,7 @@ public class Book_now extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_now);
         Spinner spinner1;
+        getSupportActionBar().hide();
 
         spinner1= (Spinner)findViewById(R.id.spinner);
 

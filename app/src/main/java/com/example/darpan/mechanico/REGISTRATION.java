@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,7 +67,11 @@ public class REGISTRATION extends AppCompatActivity  {
                     passwd.requestFocus();
                 } else if (emailID.isEmpty() && paswd.isEmpty()) {
                     Toast.makeText(REGISTRATION.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
-                } else if (!(emailID.isEmpty() && paswd.isEmpty())) {
+                } else if(!isValidMobile(number.getText().toString()))
+                {
+                    Toast.makeText(REGISTRATION.this,"Invalid number",Toast.LENGTH_LONG).show();
+                }
+                else if (!(emailID.isEmpty() && paswd.isEmpty())) {
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(REGISTRATION.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -170,6 +175,10 @@ public class REGISTRATION extends AppCompatActivity  {
                 });
 
 
+    }
+    private boolean isValidMobile(String number)
+    {
+        return Patterns.PHONE.matcher(number).matches();
     }
 
 

@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="Denting and Painting"
+                    android:text="DENTING AND PAINTING"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="30dp"
@@ -43,8 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:background="@color/azure"
+                android:background="@color/colorAccent"
                 android:text= "Select the service"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
 
