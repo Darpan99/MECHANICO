@@ -89,6 +89,28 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/date"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="false"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="600dp"
+                android:background="@drawable/roundshapbtn"
+                android:text="Choose Date"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/dateset"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="600dp"
+                android:background="@drawable/edittextstyle"
+                 />
+
             <EditText
                 android:id="@+id/cartext"
                 android:layout_width="175dp"

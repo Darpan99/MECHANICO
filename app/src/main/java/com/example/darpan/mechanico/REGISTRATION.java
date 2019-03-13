@@ -86,9 +86,12 @@ public class REGISTRATION extends AppCompatActivity  {
                             }
                         }
                     });
-                } else {
+                }
+
+                else {
                     Toast.makeText(REGISTRATION.this, "Error", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
         signIn.setOnClickListener(new View.OnClickListener() {

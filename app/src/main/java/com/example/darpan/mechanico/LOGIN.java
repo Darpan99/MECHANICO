@@ -30,7 +30,7 @@ public class LOGIN extends AppCompatActivity {
         getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
         loginEmailId = findViewById(R.id.editText8);
-        logInpasswd = findViewById(R.id.editText9);
+        logInpasswd = findViewById(R.id.password);
         btnLogIn = findViewById(R.id.button3);
         signup = findViewById(R.id.TVSignIn);
         authStateListener = new FirebaseAuth.AuthStateListener() {

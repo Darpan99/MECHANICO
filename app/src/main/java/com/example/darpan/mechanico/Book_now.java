@@ -1,28 +1,34 @@
 package com.example.darpan.mechanico;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
-
-public class Book_now extends AppCompatActivity {
+public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDateSetListener  {
 
     Button car,model,type;
     TextView itemselected,itemselected1,itemselected2;
     String[] listItems,listhonda,listhyundai,listtype,listtoyota,listford,listvolkswagen;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
+     Button datepicker;
+     TextView selecteddate;
 
 
     @Override
@@ -31,6 +37,10 @@ public class Book_now extends AppCompatActivity {
         setContentView(R.layout.activity_book_now);
         Spinner spinner1;
         getSupportActionBar().hide();
+
+
+
+
 
         spinner1= (Spinner)findViewById(R.id.spinner);
 
@@ -52,6 +62,18 @@ public class Book_now extends AppCompatActivity {
         listtype=getResources().getStringArray(R.array.fuel);
         listvolkswagen=getResources().getStringArray(R.array.Volkswagen);
         checkedItems = new boolean[listItems.length];
+        datepicker=(Button)findViewById(R.id.date);
+        datepicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datepick=new Datepickerfragment();
+                datepick.show(getSupportFragmentManager(),"");
+            }
+        });
+
+
+
+
 
         car.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +119,23 @@ public class Book_now extends AppCompatActivity {
 
 
 
+
+
     }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        Calendar c=Calendar.getInstance();
+        c.set(Calendar.YEAR,year);
+        c.set(Calendar.MONTH,month);
+        c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        String currentdate= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        selecteddate.setText(currentdate);
+
+
+    }
+
     public void modelname(View view)
     {
         if((itemselected.getText().toString()).equalsIgnoreCase("Honda"))
@@ -185,4 +223,10 @@ public class Book_now extends AppCompatActivity {
             Toast.makeText(this,"Nothing selected",Toast.LENGTH_LONG).show();
         }
     }
+
+
+
+
+
+
 }
