@@ -74,6 +74,15 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvFogotPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="350dp"
+                android:text="Forgot Password?"
+               android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/TVSignIn"

@@ -30,10 +30,10 @@ public class LOGIN extends AppCompatActivity {
         getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
         loginEmailId = findViewById(R.id.editText8);
-        logInpasswd = findViewById(R.id.password);
+        logInpasswd = findViewById(R.id.editText9);
         btnLogIn = findViewById(R.id.button3);
         signup = findViewById(R.id.TVSignIn);
-        forgotPassword= (TextView)findViewById(R.id.tvForgotPassword);
+        forgotPassword= (TextView)findViewById(R.id.tvFogotPassword);
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -86,7 +86,8 @@ public class LOGIN extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LOGIN.this, password.class));
+                startActivity(new Intent(LOGIN.this, password.class
+                ));
             }
         });
 

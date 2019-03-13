@@ -24,7 +24,7 @@ public class password extends AppCompatActivity {
         passwordEmail =(EditText)findViewById(R.id.etPasswordEmail);
         resetPassword =(Button)findViewById(R.id.btnPasswordReset);
         firebaseAuth = FirebaseAuth.getInstance();
-
+        getSupportActionBar().hide();
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

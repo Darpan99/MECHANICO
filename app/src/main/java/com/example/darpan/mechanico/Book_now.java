@@ -1,6 +1,7 @@
 package com.example.darpan.mechanico;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -20,15 +22,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDateSetListener  {
+public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     Button car,model,type;
     TextView itemselected,itemselected1,itemselected2;
     String[] listItems,listhonda,listhyundai,listtype,listtoyota,listford,listvolkswagen;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
-     Button datepicker;
-     TextView selecteddate;
+    Button datepicker,timepicker;
+    TextView selecteddate,timeselect;
 
 
     @Override
@@ -45,8 +47,8 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         spinner1= (Spinner)findViewById(R.id.spinner);
 
         ArrayAdapter<String> myadapter=new ArrayAdapter<>(Book_now.this,android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Car));
-                            myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            spinner1.setAdapter(myadapter);
+        myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(myadapter);
 
         car=(Button)findViewById(R.id.carbtn);
         model=(Button)findViewById(R.id.modelbtn);
@@ -63,11 +65,24 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         listvolkswagen=getResources().getStringArray(R.array.Volkswagen);
         checkedItems = new boolean[listItems.length];
         datepicker=(Button)findViewById(R.id.date);
+        timepicker=(Button)findViewById(R.id.time);
+        selecteddate=(EditText)findViewById(R.id.dateset);
+        timeselect=(EditText)findViewById(R.id.timeselected);
+
+
+        timepicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timepicker=new Timepickerfragment();
+                timepicker.show(getSupportFragmentManager(),"Pick time");
+            }
+        });
+
         datepicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment datepick=new Datepickerfragment();
-                datepick.show(getSupportFragmentManager(),"");
+                datepick.show(getSupportFragmentManager(),"date");
             }
         });
 
@@ -96,24 +111,24 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
 
 
 
-            type.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
-                    mBuilder.setTitle("Select");
-                    mBuilder.setSingleChoiceItems(listtype, -1, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int i) {
-                            itemselected2.setText(listtype[i]);
-                            dialog.dismiss();
+        type.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
+                mBuilder.setTitle("Select");
+                mBuilder.setSingleChoiceItems(listtype, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        itemselected2.setText(listtype[i]);
+                        dialog.dismiss();
 
 
-                        }
-                    });
-                    AlertDialog mDialog = mBuilder.create();
-                    mDialog.show();
-                }
-            });
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
 
 
 
@@ -225,8 +240,8 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
     }
 
 
-
-
-
-
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        timeselect.setText(hourOfDay+":"+minute);
+    }
 }
