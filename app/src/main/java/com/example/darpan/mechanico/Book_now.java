@@ -24,13 +24,14 @@ import java.util.Calendar;
 
 public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    Button car,model,type;
-    TextView itemselected,itemselected1,itemselected2;
-    String[] listItems,listhonda,listhyundai,listtype,listtoyota,listford,listvolkswagen;
+    Button car, model, type, book;
+    TextView itemselected, itemselected1, itemselected2;
+    String[] listItems, listhonda, listhyundai, listtype, listtoyota, listford, listvolkswagen;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
-    Button datepicker,timepicker;
-    TextView selecteddate,timeselect;
+    Button datepicker, timepicker;
+    TextView selecteddate, timeselect;
+    EditText add;
 
 
     @Override
@@ -41,53 +42,62 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         getSupportActionBar().hide();
 
 
+        spinner1 = (Spinner) findViewById(R.id.spinner);
 
-
-
-        spinner1= (Spinner)findViewById(R.id.spinner);
-
-        ArrayAdapter<String> myadapter=new ArrayAdapter<>(Book_now.this,android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Car));
+        ArrayAdapter<String> myadapter = new ArrayAdapter<>(Book_now.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Car));
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(myadapter);
 
-        car=(Button)findViewById(R.id.carbtn);
-        model=(Button)findViewById(R.id.modelbtn);
-        type=(Button)findViewById(R.id.typebtn);
-        itemselected=(EditText)findViewById(R.id.cartext);
-        itemselected1=(EditText)findViewById(R.id.modeltext);
-        itemselected2=(EditText)findViewById(R.id.typetext);
+        car = (Button) findViewById(R.id.carbtn);
+        model = (Button) findViewById(R.id.modelbtn);
+        type = (Button) findViewById(R.id.typebtn);
+        itemselected = (EditText) findViewById(R.id.cartext);
+        itemselected1 = (EditText) findViewById(R.id.modeltext);
+        itemselected2 = (EditText) findViewById(R.id.typetext);
         listItems = getResources().getStringArray(R.array.cars);
         listhonda = getResources().getStringArray(R.array.Honda);
         listhyundai = getResources().getStringArray(R.array.Hyundai);
         listtoyota = getResources().getStringArray(R.array.Toyota);
-        listford= getResources().getStringArray(R.array.Ford);
-        listtype=getResources().getStringArray(R.array.fuel);
-        listvolkswagen=getResources().getStringArray(R.array.Volkswagen);
+        listford = getResources().getStringArray(R.array.Ford);
+        listtype = getResources().getStringArray(R.array.fuel);
+        listvolkswagen = getResources().getStringArray(R.array.Volkswagen);
         checkedItems = new boolean[listItems.length];
-        datepicker=(Button)findViewById(R.id.date);
-        timepicker=(Button)findViewById(R.id.time);
-        selecteddate=(EditText)findViewById(R.id.dateset);
-        timeselect=(EditText)findViewById(R.id.timeselected);
+        datepicker = (Button) findViewById(R.id.date);
+        timepicker = (Button) findViewById(R.id.time);
+        selecteddate = (EditText) findViewById(R.id.dateset);
+        timeselect = (EditText) findViewById(R.id.timeselected);
+        book = (Button) findViewById(R.id.bookit);
+        add = (EditText) findViewById(R.id.addtext);
+
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    if ((itemselected.getText().toString().equals("")) || (itemselected1.getText().toString().equals("")) || (itemselected2.getText().toString().equals("")) || (selecteddate.getText().toString().equals("")) || (timeselect.getText().toString().equals("")) || (add.getText().toString().equals(""))) {
+                        Toast.makeText(Book_now.this,"Fields are Empty",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(Book_now.this,"Booking confirmed",Toast.LENGTH_LONG).show();
+                    }
+
+            }
+        });
 
 
         timepicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment timepicker=new Timepickerfragment();
-                timepicker.show(getSupportFragmentManager(),"Pick time");
+                DialogFragment timepicker = new Timepickerfragment();
+                timepicker.show(getSupportFragmentManager(), "Pick time");
             }
         });
 
         datepicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment datepick=new Datepickerfragment();
-                datepick.show(getSupportFragmentManager(),"date");
+                DialogFragment datepick = new Datepickerfragment();
+                datepick.show(getSupportFragmentManager(), "date");
             }
         });
-
-
-
 
 
         car.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +118,6 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                 mDialog.show();
             }
         });
-
 
 
         type.setOnClickListener(new View.OnClickListener() {
@@ -134,27 +143,25 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
 
 
 
-
-
     }
+
+
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-        Calendar c=Calendar.getInstance();
-        c.set(Calendar.YEAR,year);
-        c.set(Calendar.MONTH,month);
-        c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        String currentdate= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentdate = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         selecteddate.setText(currentdate);
 
 
     }
 
-    public void modelname(View view)
-    {
-        if((itemselected.getText().toString()).equalsIgnoreCase("Honda"))
-        {
+    public void modelname(View view) {
+        if ((itemselected.getText().toString()).equalsIgnoreCase("Honda")) {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
             mBuilder.setTitle("Select model");
             mBuilder.setSingleChoiceItems(listhonda, -1, new DialogInterface.OnClickListener() {
@@ -168,9 +175,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
             });
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
-        }
-        else if((itemselected.getText().toString()).equalsIgnoreCase("Hyundai"))
-        {
+        } else if ((itemselected.getText().toString()).equalsIgnoreCase("Hyundai")) {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
             mBuilder.setTitle("Select model");
             mBuilder.setSingleChoiceItems(listhyundai, -1, new DialogInterface.OnClickListener() {
@@ -184,9 +189,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
             });
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
-        }
-        else if((itemselected.getText().toString()).equalsIgnoreCase("Toyota"))
-        {
+        } else if ((itemselected.getText().toString()).equalsIgnoreCase("Toyota")) {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
             mBuilder.setTitle("Select model");
             mBuilder.setSingleChoiceItems(listtoyota, -1, new DialogInterface.OnClickListener() {
@@ -200,9 +203,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
             });
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
-        }
-        else if((itemselected.getText().toString()).equalsIgnoreCase("Ford"))
-        {
+        } else if ((itemselected.getText().toString()).equalsIgnoreCase("Ford")) {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
             mBuilder.setTitle("Select model");
             mBuilder.setSingleChoiceItems(listford, -1, new DialogInterface.OnClickListener() {
@@ -216,9 +217,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
             });
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
-        }
-        else if((itemselected.getText().toString()).equalsIgnoreCase("Volkswagen"))
-        {
+        } else if ((itemselected.getText().toString()).equalsIgnoreCase("Volkswagen")) {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(Book_now.this);
             mBuilder.setTitle("Select model");
             mBuilder.setSingleChoiceItems(listvolkswagen, -1, new DialogInterface.OnClickListener() {
@@ -232,16 +231,16 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
             });
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
-        }
-        else
-        {
-            Toast.makeText(this,"Nothing selected",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Nothing selected", Toast.LENGTH_LONG).show();
         }
     }
 
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        timeselect.setText(hourOfDay+":"+minute);
+        timeselect.setText(hourOfDay + ":" + minute);
     }
+
+
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,8 +37,16 @@ public class denting extends AppCompatActivity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(denting.this,Book_now.class);
-                startActivity(i);
+                if((mItemSelected.getText().toString().equals("")))
+                {
+                    Toast.makeText(denting.this, "Please enter the service", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent i=new Intent(denting.this,Book_now.class);
+                    startActivity(i);
+                }
+
             }
         });
         mOrder.setOnClickListener(new View.OnClickListener() {

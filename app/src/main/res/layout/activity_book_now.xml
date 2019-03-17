@@ -76,6 +76,21 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
+
+                <Button
+                    android:id="@+id/bookit"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="800dp"
+                    android:background="@drawable/roundshapbtn"
+
+                    android:layout_centerHorizontal="true"
+                    android:text="Confirm"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/typebtn"
                     android:layout_width="120dp"
