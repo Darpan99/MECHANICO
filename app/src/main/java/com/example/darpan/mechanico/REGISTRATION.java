@@ -34,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 public class REGISTRATION extends AppCompatActivity  {
     public EditText name, number, emailId, passwd;
     Button btnSignUp;
-    TextView signIn;
+    TextView signIn, partner;
     FirebaseAuth firebaseAuth;
     SignInButton googlebtn;
     FirebaseAuth.AuthStateListener firebaseAuthListner;
@@ -53,6 +53,7 @@ public class REGISTRATION extends AppCompatActivity  {
         number= findViewById(R.id.editText3);
         googlebtn = findViewById(R.id.button2);
         btnSignUp = findViewById(R.id.button);
+        partner= findViewById(R.id.TVpartner);
         signIn = findViewById(R.id.TVSignIn);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +121,12 @@ public class REGISTRATION extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 signIn();
+            }
+        });
+        partner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(REGISTRATION.this,partnerlogin.class));
             }
         });
 
