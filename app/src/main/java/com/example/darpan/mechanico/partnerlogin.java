@@ -1,7 +1,10 @@
 package com.example.darpan.mechanico;
 
+import android.Manifest;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,84 +13,49 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 public class partnerlogin extends AppCompatActivity {
-    public EditText loginEmailId, logInpasswd;
-    Button btnLogIn;
-    TextView signup;
-    FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
-
+    Button partnerbtn;
+    TextView regpage,fpasswd;
+    EditText ed,p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partnerlogin);
         getSupportActionBar().hide();
-        firebaseAuth = FirebaseAuth.getInstance();
-        loginEmailId = findViewById(R.id.editText8);
-        logInpasswd = findViewById(R.id.editText9);
-        btnLogIn = findViewById(R.id.psignin);
-        signup = findViewById(R.id.TVSignIn);
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    Toast.makeText(partnerlogin.this, "Partner logged in ", Toast.LENGTH_SHORT).show();
-                    Intent I = new Intent(partnerlogin.this, partnerorders.class);
-                    startActivity(I);
-                } else {
-                    Toast.makeText(partnerlogin.this, "Login to continue", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        signup.setOnClickListener(new View.OnClickListener() {
+        ed= findViewById(R.id.editText8);
+        p= findViewById(R.id.editText9);
+        regpage =findViewById(R.id.TVSignIn);
+        fpasswd =findViewById(R.id.tvFogotPassword);
+        regpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent I = new Intent(partnerlogin.this, REGISTRATION.class);
-                startActivity(I);
+                startActivity(new Intent(partnerlogin.this,REGISTRATION.class));
             }
         });
-        btnLogIn.setOnClickListener(new View.OnClickListener() {
+        partnerbtn=findViewById(R.id.psignin);
+        partnerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userEmail = loginEmailId.getText().toString();
-                String userPaswd = logInpasswd.getText().toString();
-                if (userEmail.isEmpty()) {
-                    loginEmailId.setError("Provide your Email first!");
-                    loginEmailId.requestFocus();
-                } else if (userPaswd.isEmpty()) {
-                    logInpasswd.setError("Enter Password!");
-                    logInpasswd.requestFocus();
-                } else if (userEmail.isEmpty() && userPaswd.isEmpty()) {
-                    Toast.makeText(partnerlogin.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
-                } else if (!(userEmail.isEmpty() && userPaswd.isEmpty())) {
-                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPaswd).addOnCompleteListener(partnerlogin.this, new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(partnerlogin.this, "Email id or Password is incorrect", Toast.LENGTH_SHORT).show();
-                            } else {
-                                startActivity(new Intent(partnerlogin.this, partnerorders.class));
-                            }
-                        }
-                    });
-                } else {
-                    Toast.makeText(partnerlogin.this, "Error", Toast.LENGTH_SHORT).show();
+                if (ed.getText().toString().equals("mp1") && p.getText().toString().equals("001")){
+                    startActivity(new Intent(partnerlogin.this,partnerorders.class));
+                    Toast.makeText(partnerlogin.this,"Login Successful",Toast.LENGTH_SHORT).show();
                 }
+                if (ed.getText().toString().equals("mp2") && p.getText().toString().equals("002")){
+                    startActivity(new Intent(partnerlogin.this,partnerorders.class));
+                    Toast.makeText(partnerlogin.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                }
+                if (ed.getText().toString().equals("mp3") && p.getText().toString().equals("003")){
+                    startActivity(new Intent(partnerlogin.this,partnerorders.class));
+                    Toast.makeText(partnerlogin.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(partnerlogin.this,"Login Unsuccessful",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(authStateListener);
-    }
 }
