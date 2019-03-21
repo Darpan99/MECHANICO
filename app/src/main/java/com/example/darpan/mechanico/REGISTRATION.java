@@ -37,9 +37,14 @@ public class REGISTRATION extends AppCompatActivity  {
     TextView signIn, partner;
     FirebaseAuth firebaseAuth;
     SignInButton googlebtn;
+    public static String id;
+    public static FirebaseDatabase database;
+    public static DatabaseReference ref;
     FirebaseAuth.AuthStateListener firebaseAuthListner;
+    FirebaseUser firebaseUser;
     GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN=2;
+  public static  Realtime_database_users rtos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,9 @@ public class REGISTRATION extends AppCompatActivity  {
         setContentView(R.layout.activity_registration);
         getSupportActionBar().hide();
         firebaseAuth = FirebaseAuth.getInstance();
+        Realtime_database_users rtos= new Realtime_database_users();
+        database=FirebaseDatabase.getInstance();
+        ref=database.getReference("Realtime_database_users");
         emailId = findViewById(R.id.editText4);
         passwd = findViewById(R.id.editText5);
         name = findViewById(R.id.editText);
@@ -55,11 +63,16 @@ public class REGISTRATION extends AppCompatActivity  {
         btnSignUp = findViewById(R.id.button);
         partner= findViewById(R.id.TVpartner);
         signIn = findViewById(R.id.TVSignIn);
+
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailID = emailId.getText().toString();
+                final String emailID = emailId.getText().toString();
                 String paswd = passwd.getText().toString();
+                final String uname=name.getText().toString();
+                final String num=number.getText().toString();
+
                 if (emailID.isEmpty()) {
                     emailId.setError("Provide your Email first!");
                     emailId.requestFocus();
@@ -82,6 +95,14 @@ public class REGISTRATION extends AppCompatActivity  {
                                         "Registration unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
+                                FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                                id=firebaseUser.getUid();
+                              Realtime_database_users rtos=new Realtime_database_users(uname,num,emailID);
+                                 ref.child(id).child("name").setValue(name.getText().toString());
+                                ref.child(id).child("number").setValue(number.getText().toString());
+                                ref.child(id).child("email_id").setValue(emailId.getText().toString());
+                                Toast.makeText(REGISTRATION.this,"Data inserted",Toast.LENGTH_LONG).show();
+
                                 Intent i = new Intent("com.example.darpan.mechanico.page3");
                                 startActivity(i);
                             }
@@ -94,6 +115,7 @@ public class REGISTRATION extends AppCompatActivity  {
                 }
 
             }
+
         });
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +153,7 @@ public class REGISTRATION extends AppCompatActivity  {
         });
 
     }
+
 
     @Override
     protected void onStart() {

@@ -19,14 +19,14 @@ public class services extends AppCompatActivity {
     String[] listItems;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
-
+    String id3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
         getSupportActionBar().hide();
-
+        id3=REGISTRATION.id;
         mOrder = (Button) findViewById(R.id.btnorder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
 
@@ -43,6 +43,9 @@ public class services extends AppCompatActivity {
                 }
                 else
                 {
+                    Realtime_database_users rtos=new Realtime_database_users(mItemSelected.getText().toString()," ");
+                    REGISTRATION.ref.child(id3).child("Services").setValue(mItemSelected.getText().toString());
+
                     Intent i=new Intent(services.this,Book_now.class);
                     startActivity(i);
                 }

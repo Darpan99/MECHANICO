@@ -32,7 +32,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
     Button datepicker, timepicker;
     TextView selecteddate, timeselect;
     EditText add;
-
+    String id2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         ArrayAdapter<String> myadapter = new ArrayAdapter<>(Book_now.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Car));
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(myadapter);
-
+        id2=REGISTRATION.id;
         car = (Button) findViewById(R.id.carbtn);
         model = (Button) findViewById(R.id.modelbtn);
         type = (Button) findViewById(R.id.typebtn);
@@ -76,7 +76,14 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                         Toast.makeText(Book_now.this,"Fields are Empty",Toast.LENGTH_LONG).show();
                     }
                     else {
-                        Toast.makeText(Book_now.this,"Booking confirmed",Toast.LENGTH_LONG).show();
+                        Realtime_database_users rtos=new Realtime_database_users(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString());
+                        REGISTRATION.ref.child(id2).child("Car").setValue(itemselected.getText().toString());
+                        REGISTRATION.ref.child(id2).child("Car  model").setValue(itemselected1.getText().toString());
+                        REGISTRATION.ref.child(id2).child("Fuel type").setValue(itemselected2.getText().toString());
+                        REGISTRATION.ref.child(id2).child("Date").setValue(selecteddate.getText().toString());
+                        REGISTRATION.ref.child(id2).child("Time").setValue(timeselect.getText().toString());
+                        REGISTRATION.ref.child(id2).child("Address").setValue(add.getText().toString());
+                        Toast.makeText(Book_now.this,"Booking confirmed and data inserted",Toast.LENGTH_LONG).show();
                     }
 
             }

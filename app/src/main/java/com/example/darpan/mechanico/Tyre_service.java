@@ -19,14 +19,14 @@ public class Tyre_service extends AppCompatActivity {
     String[] listItems;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
-
+    String id4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tyre_service);
         getSupportActionBar().hide();
-
+        id4=REGISTRATION.id;
         mOrder = (Button) findViewById(R.id.btnorder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
 
@@ -43,6 +43,8 @@ public class Tyre_service extends AppCompatActivity {
                 }
                 else
                 {
+                    Realtime_database_users rtos=new Realtime_database_users(mItemSelected.getText().toString(),"","","");
+                    REGISTRATION.ref.child(id4).child("Tyre services").setValue(mItemSelected.getText().toString());
                     Intent i=new Intent(Tyre_service.this,Book_now.class);
                     startActivity(i);
                 }

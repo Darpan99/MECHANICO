@@ -21,6 +21,7 @@ public class LOGIN extends AppCompatActivity {
     Button btnLogIn;
     TextView signup, forgotPassword;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
@@ -39,7 +40,9 @@ public class LOGIN extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(LOGIN.this, "User logged in ", Toast.LENGTH_SHORT).show();
+                    FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                    String id12=firebaseUser.getUid();
+                    Toast.makeText(LOGIN.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                     Intent I = new Intent(LOGIN.this, PAGE3.class);
                     startActivity(I);
                 } else {

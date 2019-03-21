@@ -2,6 +2,7 @@ package com.example.darpan.mechanico;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +11,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class denting extends AppCompatActivity {
+
+
+    String id1;
     Button mOrder;
     Button book;
     TextView mItemSelected;
@@ -21,12 +31,13 @@ public class denting extends AppCompatActivity {
     ArrayList<Integer> mUserItems = new ArrayList<>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_denting);
         getSupportActionBar().hide();
-
+        id1=REGISTRATION.id;
         mOrder = (Button) findViewById(R.id.btnorder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
 
@@ -34,6 +45,10 @@ public class denting extends AppCompatActivity {
         checkedItems = new boolean[listItems.length];
 
         book=(Button)findViewById(R.id.btnapp);
+        REGISTRATION.rtos=new Realtime_database_users();
+
+        REGISTRATION.database=FirebaseDatabase.getInstance();
+        REGISTRATION.ref=REGISTRATION.database.getReference("Realtime_database_users");
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,9 +58,12 @@ public class denting extends AppCompatActivity {
                 }
                 else
                 {
+                    Realtime_database_users rtos=new Realtime_database_users(mItemSelected.getText().toString());
+                    REGISTRATION.ref.child(id1).child("Denting service").setValue(mItemSelected.getText().toString());
                     Intent i=new Intent(denting.this,Book_now.class);
                     startActivity(i);
                 }
+
 
             }
         });
@@ -100,5 +118,9 @@ public class denting extends AppCompatActivity {
                 mDialog.show();
             }
         });
+    }
+    public void getValues()
+    {
+        REGISTRATION.rtos.setDenting_services(mItemSelected.getText().toString());
     }
 }
