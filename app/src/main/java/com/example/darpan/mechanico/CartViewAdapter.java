@@ -35,7 +35,7 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        myViewHolder.tv_cng.setText(String.valueOf(mData.get(i).getCNG()));
+        myViewHolder.tv_cng.setText(String.valueOf(mData.get(i).getCng()));
         myViewHolder.tv_denting.setText(String.valueOf(mData.get(i).getDenting()));
         myViewHolder.tv_services.setText(String.valueOf(mData.get(i).getService()));
         myViewHolder.tv_tyre.setText(String.valueOf(mData.get(i).getTyre()));

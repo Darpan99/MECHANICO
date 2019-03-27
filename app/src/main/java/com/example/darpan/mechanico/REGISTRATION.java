@@ -105,13 +105,13 @@ public class REGISTRATION extends AppCompatActivity  {
                                  ref.child(id).child("user_name").setValue(name.getText().toString());
                                 ref.child(id).child("user_number").setValue(number.getText().toString());
                                 ref.child(id).child("user_email").setValue(emailId.getText().toString());
-                                /*services_realtime sr123=new services_realtime();
+                                services_realtime sr123=new services_realtime();
                                 String abc=sr123.setDenting("null");
-                                databaseReference.child(id).child("Denting").setValue(abc);
-                                databaseReference.child(id).child("Service").setValue(abc);
-                                databaseReference.child(id).child("Tyre").setValue(abc);
-                                databaseReference.child(id).child("CNG").setValue(abc);*/
-                                Toast.makeText(REGISTRATION.this,"Data inserted wohoo",Toast.LENGTH_LONG).show();
+                                databaseReference.child(id).child("denting").setValue(abc);
+                                databaseReference.child(id).child("service").setValue(abc);
+                                databaseReference.child(id).child("tyre").setValue(abc);
+                                databaseReference.child(id).child("cng").setValue(abc);
+                                Toast.makeText(REGISTRATION.this,"Data inserted",Toast.LENGTH_LONG).show();
 
                                 Intent i = new Intent("com.example.darpan.mechanico.page3");
                                 startActivity(i);

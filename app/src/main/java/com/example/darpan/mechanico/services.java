@@ -60,7 +60,7 @@ public class services extends AppCompatActivity {
                    firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
                     String id3=firebaseUser.getUid();
                   services_realtime sr4=new services_realtime(mItemSelected.getText().toString()," ","","");
-                   databaseReference.child(id3).child("Service").setValue(mItemSelected.getText().toString());
+                   databaseReference.child(id3).child("service").setValue(mItemSelected.getText().toString());
 
                     Intent i=new Intent(services.this,Cart.class);
                     startActivity(i);

@@ -86,10 +86,10 @@ public class LOGIN extends AppCompatActivity {
                                 firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                                 services_realtime sr123=new services_realtime();
                                 String abc=sr123.setDenting("null");
-                                databaseReference.child(firebaseUser.getUid()).child("Denting").setValue(abc);
-                                databaseReference.child(firebaseUser.getUid()).child("Service").setValue(abc);
-                                databaseReference.child(firebaseUser.getUid()).child("Tyre").setValue(abc);
-                                databaseReference.child(firebaseUser.getUid()).child("CNG").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("denting").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("service").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("tyre").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("cng").setValue(abc);
                                 startActivity(new Intent(LOGIN.this, PAGE3.class));
                             }
                         }

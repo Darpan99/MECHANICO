@@ -59,7 +59,7 @@ public class Tyre_service extends AppCompatActivity {
                      firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
                     String id4=firebaseUser.getUid();
                     services_realtime sr1=new services_realtime(mItemSelected.getText().toString(),"","");
-                    reference.child(id4).child("Tyre").setValue(mItemSelected.getText().toString());
+                    reference.child(id4).child("tyre").setValue(mItemSelected.getText().toString());
                     Intent i=new Intent(Tyre_service.this,Cart.class);
                     startActivity(i);
                 }

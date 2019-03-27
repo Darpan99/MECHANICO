@@ -2,13 +2,13 @@ package com.example.darpan.mechanico;
 
 public class bookrealtime {
 
-    String Car,Car_model,Fuel_type,Address,Date,Time,OTP;
+    String Car,Car_model,Fuel_type,Address,Date,Time,OTP,user_name;
     public bookrealtime()
     {
 
     }
 
-    public bookrealtime(String Car, String Car_model, String Fuel_type, String Address, String Date, String Time, String OTP) {
+    public bookrealtime(String Car, String Car_model, String Fuel_type, String Address, String Date, String Time, String OTP,String user_name) {
         this.Car = Car;
         this.Car_model =Car_model;
         this.Fuel_type = Fuel_type;
@@ -16,6 +16,7 @@ public class bookrealtime {
        this.Date = Date;
        this.Time =Time;
         this.OTP = OTP;
+        this.user_name=user_name;
     }
 
 
@@ -73,5 +74,13 @@ public class bookrealtime {
 
     public void setOTP(String OTP) {
         this.OTP = OTP;
+    }
+
+   public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }

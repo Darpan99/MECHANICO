@@ -41,6 +41,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
     FirebaseAuth firebaseAuth;
     public static FirebaseDatabase database;
   private DatabaseReference reference;
+  public  Realtime_database_users rtds;
 
     FirebaseUser firebaseUser;
     public static bookrealtime brt;
@@ -64,6 +65,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         firebaseAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         reference=database.getReference("bookrealtime");
+        rtds=new Realtime_database_users();
         car = (Button) findViewById(R.id.carbtn);
         model = (Button) findViewById(R.id.modelbtn);
         type = (Button) findViewById(R.id.typebtn);
@@ -97,7 +99,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                 else {
                     firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                     textGenerateNumber.setText(String.valueOf(myRandom.nextInt(100)));
-                    bookrealtime brt =new bookrealtime(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString(),textGenerateNumber.getText().toString());
+                    bookrealtime brt =new bookrealtime(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString(),textGenerateNumber.getText().toString(),rtds.getUser_name());
                     reference.child(firebaseUser.getUid()).child("Car").setValue(itemselected.getText().toString());
                     reference.child(firebaseUser.getUid()).child("Car_model").setValue(itemselected1.getText().toString());
                     reference.child(firebaseUser.getUid()).child("Fuel_type").setValue(itemselected2.getText().toString());
@@ -105,6 +107,8 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                    reference.child(firebaseUser.getUid()).child("Time").setValue(timeselect.getText().toString());
                     reference.child(firebaseUser.getUid()).child("Address").setValue(add.getText().toString());
                     reference.child(firebaseUser.getUid()).child("OTP").setValue(textGenerateNumber.getText().toString());
+                   reference.child(firebaseUser.getUid()).child("user_name").setValue(rtds.user_name);
+
                     Toast.makeText(Book_now.this,"Booking confirmed and data inserted",Toast.LENGTH_LONG).show();
 
 

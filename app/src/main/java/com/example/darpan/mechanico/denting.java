@@ -70,7 +70,7 @@ public class denting extends AppCompatActivity {
                     String id1=firebaseUser.getUid();
 
                     rs=new services_realtime(mItemSelected.getText().toString());
-                    databaseReference.child(id1).child("Denting").setValue(mItemSelected.getText().toString());
+                    databaseReference.child(id1).child("denting").setValue(mItemSelected.getText().toString());
                     Intent i=new Intent(denting.this,Cart.class);
                     startActivity(i);
                 }
