@@ -1,86 +1,111 @@
 package com.example.darpan.mechanico;
 
-public class bookrealtime {
+public class bookrealtime extends Realtime_database_users{
 
-    String Car,Car_model,Fuel_type,Address,Date,Time,OTP,user_name;
-    public bookrealtime()
+    String car, car_model, fuel_type, address, date, time, otp,user_name,user_email,user_number;
+
+    public bookrealtime() {
+
+    }
+    public bookrealtime(Realtime_database_users rtos)
     {
-
+        this.user_name=rtos.user_name;
+        this.user_email=rtos.user_email;
+        this.user_number=rtos.user_number;
     }
 
-    public bookrealtime(String Car, String Car_model, String Fuel_type, String Address, String Date, String Time, String OTP,String user_name) {
-        this.Car = Car;
-        this.Car_model =Car_model;
-        this.Fuel_type = Fuel_type;
-        this.Address = Address;
-       this.Date = Date;
-       this.Time =Time;
-        this.OTP = OTP;
-        this.user_name=user_name;
-    }
+    public bookrealtime(String car, String car_model, String fuel_type, String address, String date, String time, String otp) {
+        this.car = car;
+        this.car_model = car_model;
+        this.fuel_type = fuel_type;
+        this.address = address;
+        this.date = date;
+        this.time = time;
+        this.otp = otp;
 
+    }
 
     public String getCar() {
-        return Car;
+        return car;
     }
 
-    public void setCar(String Car) {
-        this.Car = Car;
+    public void setCar(String car) {
+        this.car = car;
     }
 
     public String getCar_model() {
-        return Car_model;
+        return car_model;
     }
 
-    public void setCar_model(String Car_model) {
-        this.Car_model = Car_model;
+    public void setCar_model(String car_model) {
+        this.car_model = car_model;
     }
 
     public String getFuel_type() {
-        return Fuel_type;
+        return fuel_type;
     }
 
-    public void setFuel_type(String Fuel_type) {
-        this.Fuel_type = Fuel_type;
+    public void setFuel_type(String fuel_type) {
+        this.fuel_type = fuel_type;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
-    public void setDate(String Date) {
-        this.Date = Date;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTime() {
-        return Time;
+        return time;
     }
 
-    public void setTime(String Time) {
-        this.Time = Time;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getOTP() {
-        return OTP;
+    public String getOtp() {
+        return otp;
     }
 
-    public void setOTP(String OTP) {
-        this.OTP = OTP;
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 
-   public String getUser_name() {
+    public String getUser_name() {
         return user_name;
     }
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    @Override
+    public String getUser_email() {
+        return user_email;
+    }
+
+    @Override
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
+    }
+
+    @Override
+    public String getUser_number() {
+        return user_number;
+    }
+
+    @Override
+    public void setUser_number(String user_number) {
+        this.user_number = user_number;
     }
 }

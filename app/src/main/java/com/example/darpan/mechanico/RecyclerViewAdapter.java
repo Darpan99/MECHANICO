@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         myViewHolder.tv_date.setText(String.valueOf(mData.get(i).getDate()));
 
         myViewHolder.tv_time.setText(String.valueOf(mData.get(i).getTime()));
-        myViewHolder.tv_otp.setText(String.valueOf(mData.get(i).getOTP()));
+        myViewHolder.tv_otp.setText(String.valueOf(mData.get(i).getOtp()));
 
 
 

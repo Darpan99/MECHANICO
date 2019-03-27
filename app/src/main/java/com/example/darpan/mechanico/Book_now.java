@@ -44,7 +44,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
   public  Realtime_database_users rtds;
 
     FirebaseUser firebaseUser;
-    public static bookrealtime brt;
+
     Random r;
 
     @Override
@@ -67,6 +67,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         reference=database.getReference("bookrealtime");
         rtds=new Realtime_database_users();
         car = (Button) findViewById(R.id.carbtn);
+        bookrealtime brt1=new bookrealtime();
         model = (Button) findViewById(R.id.modelbtn);
         type = (Button) findViewById(R.id.typebtn);
         itemselected = (EditText) findViewById(R.id.cartext);
@@ -99,17 +100,22 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                 else {
                     firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                     textGenerateNumber.setText(String.valueOf(myRandom.nextInt(100)));
-                    bookrealtime brt =new bookrealtime(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString(),textGenerateNumber.getText().toString(),rtds.getUser_name());
-                    reference.child(firebaseUser.getUid()).child("Car").setValue(itemselected.getText().toString());
-                    reference.child(firebaseUser.getUid()).child("Car_model").setValue(itemselected1.getText().toString());
-                    reference.child(firebaseUser.getUid()).child("Fuel_type").setValue(itemselected2.getText().toString());
-                   reference.child(firebaseUser.getUid()).child("Date").setValue(selecteddate.getText().toString());
-                   reference.child(firebaseUser.getUid()).child("Time").setValue(timeselect.getText().toString());
-                    reference.child(firebaseUser.getUid()).child("Address").setValue(add.getText().toString());
-                    reference.child(firebaseUser.getUid()).child("OTP").setValue(textGenerateNumber.getText().toString());
-                   reference.child(firebaseUser.getUid()).child("user_name").setValue(rtds.user_name);
+                    bookrealtime brt =new bookrealtime(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString(),textGenerateNumber.getText().toString());
 
-                    Toast.makeText(Book_now.this,"Booking confirmed and data inserted",Toast.LENGTH_LONG).show();
+
+                    reference.child(firebaseUser.getUid()).child("car").setValue(itemselected.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("car_model").setValue(itemselected1.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("fuel_type").setValue(itemselected2.getText().toString());
+                   reference.child(firebaseUser.getUid()).child("date").setValue(selecteddate.getText().toString());
+                   reference.child(firebaseUser.getUid()).child("time").setValue(timeselect.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("address").setValue(add.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("otp").setValue(textGenerateNumber.getText().toString());
+                   //reference.child(firebaseUser.getUid()).child("user_name").setValue(brt.getUser_name());
+                   //reference.child(firebaseUser.getUid()).child("user_number").setValue(brt.getUser_number());
+
+
+
+                    Toast.makeText(Book_now.this,brt.user_name,Toast.LENGTH_LONG).show();
 
 
                 }

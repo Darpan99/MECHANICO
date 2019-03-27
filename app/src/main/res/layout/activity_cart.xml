@@ -25,13 +25,13 @@
         android:id="@+id/rv1"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="450dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="300dp"></android.support.v7.widget.RecyclerView>
     <Button
         android:id="@+id/btbook"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="350dp"
         android:background="@drawable/roundshapbtn"
         android:layout_marginLeft="80dp"
         android:text="Book"
@@ -41,10 +41,11 @@
 
     <Button
         android:id="@+id/btback"
-        android:layout_width="250dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="80dp"
         android:background="@drawable/roundshapbtn"
         android:text="Add another service"
         android:textAlignment="center"

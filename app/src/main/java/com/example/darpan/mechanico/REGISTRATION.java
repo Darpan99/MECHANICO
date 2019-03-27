@@ -102,9 +102,16 @@ public class REGISTRATION extends AppCompatActivity  {
                                 FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                                 id=firebaseUser.getUid();
                               Realtime_database_users rtos=new Realtime_database_users(uname,num,emailID);
+
+
+
                                  ref.child(id).child("user_name").setValue(name.getText().toString());
                                 ref.child(id).child("user_number").setValue(number.getText().toString());
                                 ref.child(id).child("user_email").setValue(emailId.getText().toString());
+                                /*rtos.setUser_email(emailID);
+                                rtos.setUser_name(uname);
+                                rtos.setUser_number(num);
+                                bookrealtime brt=new bookrealtime(rtos);*/
                                 services_realtime sr123=new services_realtime();
                                 String abc=sr123.setDenting("null");
                                 databaseReference.child(id).child("denting").setValue(abc);
@@ -112,6 +119,7 @@ public class REGISTRATION extends AppCompatActivity  {
                                 databaseReference.child(id).child("tyre").setValue(abc);
                                 databaseReference.child(id).child("cng").setValue(abc);
                                 Toast.makeText(REGISTRATION.this,"Data inserted",Toast.LENGTH_LONG).show();
+
 
                                 Intent i = new Intent("com.example.darpan.mechanico.page3");
                                 startActivity(i);
