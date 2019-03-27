@@ -17,27 +17,40 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 
 public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     Button car, model, type, book;
-    TextView itemselected, itemselected1, itemselected2;
-    String[] listItems, listhonda, listhyundai, listtype, listtoyota, listford, listvolkswagen;
+    public TextView itemselected, itemselected1, itemselected2;
+    public String[] listItems, listhonda, listhyundai, listtype, listtoyota, listford, listvolkswagen;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     Button datepicker, timepicker;
-    TextView selecteddate, timeselect;
-    EditText add;
-    String id2;
+    public TextView selecteddate, timeselect;
+    public TextView add;
+    FirebaseAuth firebaseAuth;
+    public static FirebaseDatabase database;
+  private DatabaseReference reference;
+
+    FirebaseUser firebaseUser;
+    public static bookrealtime brt;
+    Random r;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_now);
+
         Spinner spinner1;
         getSupportActionBar().hide();
 
@@ -47,7 +60,10 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         ArrayAdapter<String> myadapter = new ArrayAdapter<>(Book_now.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Car));
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(myadapter);
-        id2=REGISTRATION.id;
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        database=FirebaseDatabase.getInstance();
+        reference=database.getReference("bookrealtime");
         car = (Button) findViewById(R.id.carbtn);
         model = (Button) findViewById(R.id.modelbtn);
         type = (Button) findViewById(R.id.typebtn);
@@ -67,24 +83,32 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         selecteddate = (EditText) findViewById(R.id.dateset);
         timeselect = (EditText) findViewById(R.id.timeselected);
         book = (Button) findViewById(R.id.bookit);
-        add = (EditText) findViewById(R.id.addtext);
+        add = (TextView) findViewById(R.id.addtext);
+        final Random myRandom= new Random();
+        final TextView textGenerateNumber= (TextView)findViewById(R.id.text_View);
+
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    if ((itemselected.getText().toString().equals("")) || (itemselected1.getText().toString().equals("")) || (itemselected2.getText().toString().equals("")) || (selecteddate.getText().toString().equals("")) || (timeselect.getText().toString().equals("")) || (add.getText().toString().equals(""))) {
-                        Toast.makeText(Book_now.this,"Fields are Empty",Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        Realtime_database_users rtos=new Realtime_database_users(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString());
-                        REGISTRATION.ref.child(id2).child("Car").setValue(itemselected.getText().toString());
-                        REGISTRATION.ref.child(id2).child("Car  model").setValue(itemselected1.getText().toString());
-                        REGISTRATION.ref.child(id2).child("Fuel type").setValue(itemselected2.getText().toString());
-                        REGISTRATION.ref.child(id2).child("Date").setValue(selecteddate.getText().toString());
-                        REGISTRATION.ref.child(id2).child("Time").setValue(timeselect.getText().toString());
-                        REGISTRATION.ref.child(id2).child("Address").setValue(add.getText().toString());
-                        Toast.makeText(Book_now.this,"Booking confirmed and data inserted",Toast.LENGTH_LONG).show();
-                    }
+                if ((itemselected.getText().toString().equals("")) || (itemselected1.getText().toString().equals("")) || (itemselected2.getText().toString().equals("")) || (selecteddate.getText().toString().equals("")) || (timeselect.getText().toString().equals("")) || (add.getText().toString().equals(""))) {
+                    Toast.makeText(Book_now.this,"Fields are Empty",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                    textGenerateNumber.setText(String.valueOf(myRandom.nextInt(100)));
+                    bookrealtime brt =new bookrealtime(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString(),textGenerateNumber.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("Car").setValue(itemselected.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("Car_model").setValue(itemselected1.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("Fuel_type").setValue(itemselected2.getText().toString());
+                   reference.child(firebaseUser.getUid()).child("Date").setValue(selecteddate.getText().toString());
+                   reference.child(firebaseUser.getUid()).child("Time").setValue(timeselect.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("Address").setValue(add.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("OTP").setValue(textGenerateNumber.getText().toString());
+                    Toast.makeText(Book_now.this,"Booking confirmed and data inserted",Toast.LENGTH_LONG).show();
+
+
+                }
 
             }
         });
@@ -151,6 +175,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
 
 
     }
+
 
 
 

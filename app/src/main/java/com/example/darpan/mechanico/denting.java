@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +23,12 @@ import java.util.ArrayList;
 
 public class denting extends AppCompatActivity {
 
-
+    FirebaseAuth firebaseAuth;
+    public static FirebaseDatabase database;
+    public static DatabaseReference databaseReference;
+    FirebaseAuth.AuthStateListener firebaseAuthListener;
+    FirebaseUser firebaseUser;
+    public static services_realtime rs;
     String id1;
     Button mOrder;
     Button book;
@@ -37,7 +44,11 @@ public class denting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_denting);
         getSupportActionBar().hide();
-        id1=REGISTRATION.id;
+        firebaseAuth=FirebaseAuth.getInstance();
+        services_realtime sr=new services_realtime();
+        database=FirebaseDatabase.getInstance();
+        databaseReference=database.getReference("services_realtime");
+
         mOrder = (Button) findViewById(R.id.btnorder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
 
@@ -45,10 +56,7 @@ public class denting extends AppCompatActivity {
         checkedItems = new boolean[listItems.length];
 
         book=(Button)findViewById(R.id.btnapp);
-        REGISTRATION.rtos=new Realtime_database_users();
 
-        REGISTRATION.database=FirebaseDatabase.getInstance();
-        REGISTRATION.ref=REGISTRATION.database.getReference("Realtime_database_users");
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,9 +66,12 @@ public class denting extends AppCompatActivity {
                 }
                 else
                 {
-                    Realtime_database_users rtos=new Realtime_database_users(mItemSelected.getText().toString());
-                    REGISTRATION.ref.child(id1).child("Denting service").setValue(mItemSelected.getText().toString());
-                    Intent i=new Intent(denting.this,Book_now.class);
+                    FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+                    String id1=firebaseUser.getUid();
+
+                    rs=new services_realtime(mItemSelected.getText().toString());
+                    databaseReference.child(id1).child("Denting").setValue(mItemSelected.getText().toString());
+                    Intent i=new Intent(denting.this,Cart.class);
                     startActivity(i);
                 }
 
@@ -119,8 +130,9 @@ public class denting extends AppCompatActivity {
             }
         });
     }
-    public void getValues()
+   /* public void getValues()
     {
         REGISTRATION.rtos.setDenting_services(mItemSelected.getText().toString());
     }
+    */
 }

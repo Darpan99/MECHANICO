@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LOGIN extends AppCompatActivity {
     public EditText loginEmailId, logInpasswd;
@@ -22,6 +24,8 @@ public class LOGIN extends AppCompatActivity {
     TextView signup, forgotPassword;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseDatabase database;
+    DatabaseReference databaseReference;
     private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
@@ -34,14 +38,16 @@ public class LOGIN extends AppCompatActivity {
         logInpasswd = findViewById(R.id.editText9);
         btnLogIn = findViewById(R.id.button3);
         signup = findViewById(R.id.TVSignIn);
+        database=FirebaseDatabase.getInstance();
+        databaseReference=database.getReference("services_realtime");
         forgotPassword= (TextView)findViewById(R.id.tvFogotPassword);
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-                    String id12=firebaseUser.getUid();
+                FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                if (firebaseUser != null) {
+
+
                     Toast.makeText(LOGIN.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                     Intent I = new Intent(LOGIN.this, PAGE3.class);
                     startActivity(I);
@@ -77,6 +83,13 @@ public class LOGIN extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LOGIN.this, "Email id or Password is incorrect", Toast.LENGTH_SHORT).show();
                             } else {
+                                firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+                                services_realtime sr123=new services_realtime();
+                                String abc=sr123.setDenting("null");
+                                databaseReference.child(firebaseUser.getUid()).child("Denting").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("Service").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("Tyre").setValue(abc);
+                                databaseReference.child(firebaseUser.getUid()).child("CNG").setValue(abc);
                                 startActivity(new Intent(LOGIN.this, PAGE3.class));
                             }
                         }

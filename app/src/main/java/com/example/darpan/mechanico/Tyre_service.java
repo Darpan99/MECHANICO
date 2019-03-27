@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class Tyre_service extends AppCompatActivity {
@@ -20,13 +25,21 @@ public class Tyre_service extends AppCompatActivity {
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     String id4;
-
+    FirebaseAuth firebaseAuth;
+    public static FirebaseDatabase database;
+    public static DatabaseReference reference;
+    FirebaseAuth.AuthStateListener firebaseAuthListener;
+    FirebaseUser firebaseUser;
+    public static services_realtime sr1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tyre_service);
         getSupportActionBar().hide();
-        id4=REGISTRATION.id;
+        firebaseAuth=FirebaseAuth.getInstance();
+        services_realtime sr1=new services_realtime();
+        database=FirebaseDatabase.getInstance();
+        reference=database.getReference("services_realtime");
         mOrder = (Button) findViewById(R.id.btnorder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
 
@@ -43,9 +56,11 @@ public class Tyre_service extends AppCompatActivity {
                 }
                 else
                 {
-                    Realtime_database_users rtos=new Realtime_database_users(mItemSelected.getText().toString(),"","","");
-                    REGISTRATION.ref.child(id4).child("Tyre services").setValue(mItemSelected.getText().toString());
-                    Intent i=new Intent(Tyre_service.this,Book_now.class);
+                     firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+                    String id4=firebaseUser.getUid();
+                    services_realtime sr1=new services_realtime(mItemSelected.getText().toString(),"","");
+                    reference.child(id4).child("Tyre").setValue(mItemSelected.getText().toString());
+                    Intent i=new Intent(Tyre_service.this,Cart.class);
                     startActivity(i);
                 }
 

@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class services extends AppCompatActivity {
@@ -20,13 +25,22 @@ public class services extends AppCompatActivity {
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     String id3;
+    FirebaseAuth firebaseAuth;
+    public static FirebaseDatabase database;
+    public static DatabaseReference databaseReference;
+    FirebaseAuth.AuthStateListener firebaseAuthListener;
+    FirebaseUser firebaseUser;
+    public static  services_realtime sr4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
         getSupportActionBar().hide();
-        id3=REGISTRATION.id;
+        firebaseAuth=FirebaseAuth.getInstance();
+        services_realtime sr4=new services_realtime();
+        database=FirebaseDatabase.getInstance();
+        databaseReference=database.getReference("services_realtime");
         mOrder = (Button) findViewById(R.id.btnorder);
         mItemSelected = (TextView) findViewById(R.id.tvItemSelected);
 
@@ -43,10 +57,12 @@ public class services extends AppCompatActivity {
                 }
                 else
                 {
-                    Realtime_database_users rtos=new Realtime_database_users(mItemSelected.getText().toString()," ");
-                    REGISTRATION.ref.child(id3).child("Services").setValue(mItemSelected.getText().toString());
+                   firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+                    String id3=firebaseUser.getUid();
+                  services_realtime sr4=new services_realtime(mItemSelected.getText().toString()," ","","");
+                   databaseReference.child(id3).child("Service").setValue(mItemSelected.getText().toString());
 
-                    Intent i=new Intent(services.this,Book_now.class);
+                    Intent i=new Intent(services.this,Cart.class);
                     startActivity(i);
                 }
 

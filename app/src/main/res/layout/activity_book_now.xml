@@ -90,6 +90,16 @@
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text_View"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="800dp"
+                    android:text="otp"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
 
                 <Button
                     android:id="@+id/typebtn"

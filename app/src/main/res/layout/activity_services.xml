@@ -71,7 +71,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:background="@drawable/roundshapbtn"
-                android:text="BOOK AN APPOINTMENT"
+                android:text="Add to Cart"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold" />

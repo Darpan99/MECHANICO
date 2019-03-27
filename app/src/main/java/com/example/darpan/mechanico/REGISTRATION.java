@@ -39,12 +39,15 @@ public class REGISTRATION extends AppCompatActivity  {
     SignInButton googlebtn;
     public static String id;
     public static FirebaseDatabase database;
-    public static DatabaseReference ref;
+    public static DatabaseReference ref,databaseReference;
     FirebaseAuth.AuthStateListener firebaseAuthListner;
     FirebaseUser firebaseUser;
     GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN=2;
   public static  Realtime_database_users rtos;
+  public static services_realtime sr123;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class REGISTRATION extends AppCompatActivity  {
         Realtime_database_users rtos= new Realtime_database_users();
         database=FirebaseDatabase.getInstance();
         ref=database.getReference("Realtime_database_users");
+        databaseReference=database.getReference("services_realtime");
         emailId = findViewById(R.id.editText4);
         passwd = findViewById(R.id.editText5);
         name = findViewById(R.id.editText);
@@ -98,10 +102,16 @@ public class REGISTRATION extends AppCompatActivity  {
                                 FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                                 id=firebaseUser.getUid();
                               Realtime_database_users rtos=new Realtime_database_users(uname,num,emailID);
-                                 ref.child(id).child("name").setValue(name.getText().toString());
-                                ref.child(id).child("number").setValue(number.getText().toString());
-                                ref.child(id).child("email_id").setValue(emailId.getText().toString());
-                                Toast.makeText(REGISTRATION.this,"Data inserted",Toast.LENGTH_LONG).show();
+                                 ref.child(id).child("user_name").setValue(name.getText().toString());
+                                ref.child(id).child("user_number").setValue(number.getText().toString());
+                                ref.child(id).child("user_email").setValue(emailId.getText().toString());
+                                /*services_realtime sr123=new services_realtime();
+                                String abc=sr123.setDenting("null");
+                                databaseReference.child(id).child("Denting").setValue(abc);
+                                databaseReference.child(id).child("Service").setValue(abc);
+                                databaseReference.child(id).child("Tyre").setValue(abc);
+                                databaseReference.child(id).child("CNG").setValue(abc);*/
+                                Toast.makeText(REGISTRATION.this,"Data inserted wohoo",Toast.LENGTH_LONG).show();
 
                                 Intent i = new Intent("com.example.darpan.mechanico.page3");
                                 startActivity(i);
