@@ -39,7 +39,7 @@ public class REGISTRATION extends AppCompatActivity  {
     SignInButton googlebtn;
     public static String id;
     public static FirebaseDatabase database;
-    public static DatabaseReference ref,databaseReference;
+    public static DatabaseReference ref,databaseReference,databaseReference1;
     FirebaseAuth.AuthStateListener firebaseAuthListner;
     FirebaseUser firebaseUser;
     GoogleSignInClient mGoogleSignInClient;
@@ -58,7 +58,9 @@ public class REGISTRATION extends AppCompatActivity  {
         Realtime_database_users rtos= new Realtime_database_users();
         database=FirebaseDatabase.getInstance();
         ref=database.getReference("Realtime_database_users");
+        databaseReference1=database.getReference("bookrealtime");
         databaseReference=database.getReference("services_realtime");
+
         emailId = findViewById(R.id.editText4);
         passwd = findViewById(R.id.editText5);
         name = findViewById(R.id.editText);
@@ -102,23 +104,27 @@ public class REGISTRATION extends AppCompatActivity  {
                                 FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                                 id=firebaseUser.getUid();
                               Realtime_database_users rtos=new Realtime_database_users(uname,num,emailID);
+                              Realtime_database_users r=new Realtime_database_users();
+
 
 
 
                                  ref.child(id).child("user_name").setValue(name.getText().toString());
                                 ref.child(id).child("user_number").setValue(number.getText().toString());
                                 ref.child(id).child("user_email").setValue(emailId.getText().toString());
-                                /*rtos.setUser_email(emailID);
-                                rtos.setUser_name(uname);
-                                rtos.setUser_number(num);
-                                bookrealtime brt=new bookrealtime(rtos);*/
+                                r.setUser_email(emailID);
+                                r.setUser_name(uname);
+                                r.setUser_number(num);
+                                Book_now bn=new Book_now(r);
                                 services_realtime sr123=new services_realtime();
                                 String abc=sr123.setDenting("null");
                                 databaseReference.child(id).child("denting").setValue(abc);
                                 databaseReference.child(id).child("service").setValue(abc);
                                 databaseReference.child(id).child("tyre").setValue(abc);
                                 databaseReference.child(id).child("cng").setValue(abc);
-                                Toast.makeText(REGISTRATION.this,"Data inserted",Toast.LENGTH_LONG).show();
+
+                                //databaseReference1.child(id).child("user_name").setValue(uname);
+                                Toast.makeText(REGISTRATION.this,r.getUser_name(),Toast.LENGTH_LONG).show();
 
 
                                 Intent i = new Intent("com.example.darpan.mechanico.page3");

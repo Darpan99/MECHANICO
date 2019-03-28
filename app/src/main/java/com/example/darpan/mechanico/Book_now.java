@@ -43,10 +43,26 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
     public static FirebaseDatabase database;
   private DatabaseReference reference;
   public  Realtime_database_users rtds;
-
-    FirebaseUser firebaseUser;
-
+  String user_name,user_number,user_email;
+ FirebaseUser firebaseUser;
+public bookrealtime b;
     Random r;
+    public Book_now()
+    {
+
+    }
+    public Book_now(Realtime_database_users r)
+
+    {
+        this.user_number=r.getUser_number();
+        this.user_email=r.getUser_email();
+        this.user_name=r.getUser_name();
+
+        ;
+
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +109,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         final TextView textGenerateNumber= (TextView)findViewById(R.id.text_View);
 
 
+
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +121,11 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                     textGenerateNumber.setText(String.valueOf(myRandom.nextInt(100)));
                     bookrealtime brt =new bookrealtime(itemselected.getText().toString(),itemselected1.getText().toString(),itemselected2.getText().toString(),selecteddate.getText().toString(),timeselect.getText().toString(),add.getText().toString(),textGenerateNumber.getText().toString());
 
+bookrealtime b=new bookrealtime();
 
+b.setUser_name(user_name);
+b.setUser_number(user_number);
+b.setUser_email(user_email);
                     reference.child(firebaseUser.getUid()).child("car").setValue(itemselected.getText().toString());
                     reference.child(firebaseUser.getUid()).child("car_model").setValue(itemselected1.getText().toString());
                     reference.child(firebaseUser.getUid()).child("fuel_type").setValue(itemselected2.getText().toString());
@@ -112,12 +133,19 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                    reference.child(firebaseUser.getUid()).child("time").setValue(timeselect.getText().toString());
                     reference.child(firebaseUser.getUid()).child("address").setValue(add.getText().toString());
                     reference.child(firebaseUser.getUid()).child("otp").setValue(textGenerateNumber.getText().toString());
-                   //reference.child(firebaseUser.getUid()).child("user_name").setValue(brt.getUser_name());
-                   //reference.child(firebaseUser.getUid()).child("user_number").setValue(brt.getUser_number());
+                   reference.child(firebaseUser.getUid()).child("user_name").setValue(b.getUser_name());
+                    reference.child(firebaseUser.getUid()).child("user_number").setValue(b.getUser_number());
+                    reference.child(firebaseUser.getUid()).child("user_email").setValue(b.getUser_email());
+                   /*reference.child(firebaseUser.getUid()).child("user_number").setValue(user_number);
+                    reference.child(firebaseUser.getUid()).child("user_email").setValue(user_email);*/
 
 
 
-                    Toast.makeText(Book_now.this,brt.user_name,Toast.LENGTH_LONG).show();
+
+
+
+
+                    Toast.makeText(Book_now.this,b.getUser_name(),Toast.LENGTH_LONG).show();
 
 
                 }

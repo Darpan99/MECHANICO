@@ -9,8 +9,8 @@
     </item>
     <item
         android:id="@+id/item_2"
-        android:title="@string/my_orders"
-        android:icon="@drawable/ic_mood_black_24dp"
+        android:title="My Cart"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
         >
     </item>
 

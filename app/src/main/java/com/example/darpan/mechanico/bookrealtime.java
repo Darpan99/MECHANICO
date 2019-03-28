@@ -1,18 +1,21 @@
 package com.example.darpan.mechanico;
 
-public class bookrealtime extends Realtime_database_users{
+public class bookrealtime extends Realtime_database_users
+{
 
     String car, car_model, fuel_type, address, date, time, otp,user_name,user_email,user_number;
+
 
     public bookrealtime() {
 
     }
-    public bookrealtime(Realtime_database_users rtos)
+   public bookrealtime(Realtime_database_users rtos)
     {
         this.user_name=rtos.user_name;
         this.user_email=rtos.user_email;
         this.user_number=rtos.user_number;
     }
+
 
     public bookrealtime(String car, String car_model, String fuel_type, String address, String date, String time, String otp) {
         this.car = car;
@@ -81,10 +84,12 @@ public class bookrealtime extends Realtime_database_users{
         this.otp = otp;
     }
 
+    @Override
     public String getUser_name() {
         return user_name;
     }
 
+    @Override
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
@@ -108,4 +113,10 @@ public class bookrealtime extends Realtime_database_users{
     public void setUser_number(String user_number) {
         this.user_number = user_number;
     }
+
+   /*public String uname1()
+   {
+      user_name1=r.getUser_name();
+      return user_name1;
+   }*/
 }

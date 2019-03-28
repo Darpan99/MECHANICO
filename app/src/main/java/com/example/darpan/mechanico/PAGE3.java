@@ -137,8 +137,8 @@ public class PAGE3  extends AppCompatActivity {
 
                 }
                 else if(id==R.id.item_2) {
-                    //my orders
-                    Intent i=new Intent(PAGE3.this,My_orders.class);
+                    //my cart
+                    Intent i=new Intent(PAGE3.this,Cart.class);
                     startActivity(i);
                 }
 

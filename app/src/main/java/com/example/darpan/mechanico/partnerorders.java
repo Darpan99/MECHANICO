@@ -51,6 +51,8 @@ public class partnerorders extends AppCompatActivity {
                 {
                    bookrealtime brt=dataSnapshot1.getValue(bookrealtime.class);
                     list.add(brt);
+                    //Realtime_database_users r1=dataSnapshot1.getValue(Realtime_database_users.class);
+                    //list.add(r1);
                 }
 
                 adapter=new RecyclerViewAdapter(partnerorders.this,list);
