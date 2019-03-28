@@ -3,6 +3,7 @@ package com.example.darpan.mechanico;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +31,7 @@ import java.util.Random;
 
 public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    Button car, model, type, book;
+    Button car, model, type, book,address;
     public TextView itemselected, itemselected1, itemselected2;
     public String[] listItems, listhonda, listhyundai, listtype, listtoyota, listford, listvolkswagen;
     boolean[] checkedItems;
@@ -87,6 +88,7 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
         timeselect = (EditText) findViewById(R.id.timeselected);
         book = (Button) findViewById(R.id.bookit);
         add = (TextView) findViewById(R.id.addtext);
+        address= (Button)findViewById(R.id.getadd);
         final Random myRandom= new Random();
         final TextView textGenerateNumber= (TextView)findViewById(R.id.text_View);
 
@@ -177,6 +179,13 @@ public class Book_now extends AppCompatActivity implements DatePickerDialog.OnDa
                 });
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
+            }
+        });
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Book_now.this, MapsActivity.class));
             }
         });
 
