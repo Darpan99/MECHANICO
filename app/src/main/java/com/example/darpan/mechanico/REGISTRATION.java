@@ -61,6 +61,7 @@ public class REGISTRATION extends AppCompatActivity  {
         ref=database.getReference("Realtime_database_users");
         databaseReference1=database.getReference("bookrealtime");
         databaseReference=database.getReference("services_realtime");
+        final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         emailId = findViewById(R.id.editText4);
         passwd = findViewById(R.id.editText5);
@@ -97,7 +98,7 @@ public class REGISTRATION extends AppCompatActivity  {
                 {
                     Toast.makeText(REGISTRATION.this,"Invalid number",Toast.LENGTH_LONG).show();
                 }
-                else if (!(emailID.isEmpty() && paswd.isEmpty())) {
+                else if (!(emailID.isEmpty() && paswd.isEmpty())&&(emailID.matches(emailPattern))) {
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(REGISTRATION.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {

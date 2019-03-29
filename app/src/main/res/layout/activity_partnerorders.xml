@@ -7,6 +7,8 @@
     tools:context=".partnerorders"
     android:background="@color/azure">
 
+
+
     <android.support.v7.widget.RecyclerView
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"

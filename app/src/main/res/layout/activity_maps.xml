@@ -7,14 +7,14 @@
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="550dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
         class="com.google.android.gms.maps.SupportMapFragment"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:orientation="horizontal"
         android:padding="10dp"
         android:layout_alignParentBottom="true"
@@ -22,38 +22,28 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-
-            android:background="@drawable/roundshapbtn"
-            android:gravity="left"
-            android:text="SET MY LOCATION"
-            android:textAlignment="center"
+            android:layout_width="300dp"
+            android:text="GET MY LOCATION"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/roundshapbtn" />
 
         <TextView
             android:id="@+id/textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="right"
             android:layout_weight="1"
-
-            />
-
-       <!-- <Button
-            android:id="@+id/button1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="170dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/roundshapbtn"
-            android:text="PLease go back"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold" />&ndash;&gt;
--->
-    </LinearLayout>
+            android:background="@color/azure"/> <TextView
+        android:id="@+id/text"
+        android:layout_marginTop="160dp" android:text="click on the address to confrim"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_weight="1"
+        android:background="@color/azure"/>
+    </RelativeLayout>
 </RelativeLayout>
