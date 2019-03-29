@@ -32,12 +32,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class REGISTRATION extends AppCompatActivity  {
-    public EditText name, number, emailId, passwd;
+    public static EditText name, number, emailId, passwd;
     Button btnSignUp;
     TextView signIn, partner;
     FirebaseAuth firebaseAuth;
     SignInButton googlebtn;
-    public static String id;
+    public static String id,s1,s2,s3;
     public static FirebaseDatabase database;
     public static DatabaseReference ref,databaseReference,databaseReference1;
     FirebaseAuth.AuthStateListener firebaseAuthListner;
@@ -46,6 +46,7 @@ public class REGISTRATION extends AppCompatActivity  {
     private static final int RC_SIGN_IN=2;
   public static  Realtime_database_users rtos;
   public static services_realtime sr123;
+
 
 
 
@@ -71,6 +72,7 @@ public class REGISTRATION extends AppCompatActivity  {
         signIn = findViewById(R.id.TVSignIn);
 
 
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +80,10 @@ public class REGISTRATION extends AppCompatActivity  {
                 String paswd = passwd.getText().toString();
                 final String uname=name.getText().toString();
                 final String num=number.getText().toString();
+                s1=emailId.getText().toString();
+                s2=name.getText().toString();
+                s3=number.getText().toString();
+
 
                 if (emailID.isEmpty()) {
                     emailId.setError("Provide your Email first!");
@@ -104,6 +110,7 @@ public class REGISTRATION extends AppCompatActivity  {
                                 FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                                 id=firebaseUser.getUid();
                               Realtime_database_users rtos=new Realtime_database_users(uname,num,emailID);
+
                               Realtime_database_users r=new Realtime_database_users();
 
 

@@ -10,6 +10,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -93,6 +94,25 @@ public class MapsActivity extends AppCompatActivity implements
                 }
             }
         };
+        textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(MapsActivity.this,Book_now.class);
+
+
+                String a=textview.getText().toString();
+              Toast.makeText(MapsActivity.this,a,Toast.LENGTH_LONG).show();
+                intent.putExtra("Address",a);
+                startActivity(intent);
+
+
+
+
+            }
+        });
+
+
     }
 
 //Implement getAddress//
@@ -182,5 +202,6 @@ public class MapsActivity extends AppCompatActivity implements
     public void onConnectionSuspended(int i) {
 
     }
+
 }
 

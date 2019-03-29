@@ -83,7 +83,7 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if ((databaseReference.child(firebaseUser.getUid()).child("denting").equals("null"))&& (databaseReference.child(firebaseUser.getUid()).child("service").equals("null"))&& (databaseReference.child(firebaseUser.getUid()).child("cng").equals("null"))&&(databaseReference.child(firebaseUser.getUid()).child("tyre").equals("null")))
+                if (((databaseReference.child(firebaseUser.getUid()).child("denting")).equals("null"))&& (databaseReference.child(firebaseUser.getUid()).child("service").equals("null"))&& (databaseReference.child(firebaseUser.getUid()).child("cng").equals("null"))&&(databaseReference.child(firebaseUser.getUid()).child("tyre").equals("null")))
                 {
                     Toast.makeText(Cart.this, "OOPS YOUR CART IS EMPTY ", Toast.LENGTH_SHORT).show();
                 }

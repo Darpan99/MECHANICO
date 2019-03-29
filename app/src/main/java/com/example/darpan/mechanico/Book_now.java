@@ -107,6 +107,12 @@ public bookrealtime b;
         address= (Button)findViewById(R.id.getadd);
         final Random myRandom= new Random();
         final TextView textGenerateNumber= (TextView)findViewById(R.id.text_View);
+        Intent i=getIntent();
+        String s=i.getStringExtra("Address");
+        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
+        add.setText(s);
+
+
 
 
 
@@ -133,11 +139,19 @@ b.setUser_email(user_email);
                    reference.child(firebaseUser.getUid()).child("time").setValue(timeselect.getText().toString());
                     reference.child(firebaseUser.getUid()).child("address").setValue(add.getText().toString());
                     reference.child(firebaseUser.getUid()).child("otp").setValue(textGenerateNumber.getText().toString());
-                   reference.child(firebaseUser.getUid()).child("user_name").setValue(b.getUser_name());
+                    reference.child(firebaseUser.getUid()).child("user_name").setValue(REGISTRATION.s2);
+                    /*reference.child(firebaseUser.getUid()).child("user_number").setValue(REGISTRATION.s3);
+                    reference.child(firebaseUser.getUid()).child("user_email").setValue(REGISTRATION.s1);
+*/
+                    reference.child(firebaseUser.getUid()).child("user_name").setValue(REGISTRATION.name.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("user_number").setValue(REGISTRATION.number.getText().toString());
+                    reference.child(firebaseUser.getUid()).child("user_email").setValue(REGISTRATION.emailId.getText().toString());
+                   /*reference.child(firebaseUser.getUid()).child("user_name").setValue(b.getUser_name());
                     reference.child(firebaseUser.getUid()).child("user_number").setValue(b.getUser_number());
-                    reference.child(firebaseUser.getUid()).child("user_email").setValue(b.getUser_email());
+                    reference.child(firebaseUser.getUid()).child("user_email").setValue(b.getUser_email());*/
                    /*reference.child(firebaseUser.getUid()).child("user_number").setValue(user_number);
                     reference.child(firebaseUser.getUid()).child("user_email").setValue(user_email);*/
+                   // reference.child(firebaseUser.getUid()).child("user_name").setValue();
 
 
 

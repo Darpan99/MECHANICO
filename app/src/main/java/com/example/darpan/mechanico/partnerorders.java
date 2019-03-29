@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telecom.Call;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class partnerorders extends AppCompatActivity {
     ArrayList<bookrealtime> list;
     TextView tv1,tv2,tv3;
     RecyclerViewAdapter adapter;
+    Button accept;
 
     @Override
 
@@ -42,6 +44,7 @@ public class partnerorders extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partnerorders);
         recyclerView=(RecyclerView)findViewById(R.id.rv);
+        accept=findViewById(R.id.accept);
         list=new ArrayList<bookrealtime>();
     reference=FirebaseDatabase.getInstance().getReference().child("bookrealtime");
         reference.addValueEventListener(new ValueEventListener() {
@@ -68,7 +71,12 @@ public class partnerorders extends AppCompatActivity {
         });
 
 
+    accept.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
+        }
+    });
 
 
 
